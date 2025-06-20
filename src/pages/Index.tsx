@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Download, 
   Smartphone, 
@@ -22,6 +22,7 @@ import {
 const Index = () => {
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showDownloadDialog, setShowDownloadDialog] = useState(false);
 
   const screenshots = [
     { title: "Home Screen", description: "Easy navigation and game selection" },
@@ -91,6 +92,14 @@ const Index = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const handleDownloadClick = () => {
+    setShowDownloadDialog(true);
+    // Auto close dialog after 3 seconds
+    setTimeout(() => {
+      setShowDownloadDialog(false);
+    }, 3000);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       {/* Navigation */}
@@ -102,7 +111,10 @@ const Index = () => {
             </div>
             <span className="text-white font-bold text-xl">Khai Wala</span>
           </div>
-          <Button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-semibold">
+          <Button 
+            className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-semibold"
+            onClick={handleDownloadClick}
+          >
             <Download className="w-4 h-4 mr-2" />
             Download App
           </Button>
@@ -128,7 +140,11 @@ const Index = () => {
             Harup, Jodi, Crossing, and Single. Join thousands of winners today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
-            <Button size="lg" className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
+              onClick={handleDownloadClick}
+            >
               <Download className="w-5 h-5 mr-2" />
               Download for Android
             </Button>
@@ -311,7 +327,11 @@ const Index = () => {
             <p className="text-gray-300 mb-8 text-lg">
               Join thousands of players who trust Khai Wala for their Matka betting experience
             </p>
-            <Button size="lg" className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-bold text-lg px-8 py-4">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-bold text-lg px-8 py-4"
+              onClick={handleDownloadClick}
+            >
               <Download className="w-6 h-6 mr-2" />
               Download Khai Wala Now
             </Button>
@@ -370,6 +390,34 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Download Dialog */}
+      <Dialog open={showDownloadDialog} onOpenChange={setShowDownloadDialog}>
+        <DialogContent className="sm:max-w-md bg-gray-900 border-gray-700">
+          <DialogHeader>
+            <DialogTitle className="text-center text-white text-xl">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <Download className="w-8 h-8 text-black" />
+              </div>
+              Download Starting
+            </DialogTitle>
+          </DialogHeader>
+          <div className="text-center space-y-4">
+            <p className="text-gray-300">
+              Your application will download shortly. Please wait...
+            </p>
+            <div className="flex items-center justify-center space-x-2">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            </div>
+            <div className="flex items-center justify-center space-x-2 text-green-400">
+              <Check className="w-5 h-5" />
+              <span className="text-sm">Secure Download</span>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
