@@ -168,7 +168,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 border-purple-500/30 backdrop-blur-md hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="bg-gray-900/80 border-gray-700/50 backdrop-blur-md hover:bg-gray-800/90 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg mx-auto mb-4 flex items-center justify-center text-black">
                     {feature.icon}
@@ -193,7 +193,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {gameTypes.map((game, index) => (
-              <Card key={index} className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border-yellow-500/30 backdrop-blur-md hover:from-yellow-400/30 hover:to-orange-400/30 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="bg-gray-900/80 border-yellow-500/30 backdrop-blur-md hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4">{game.icon}</div>
                   <h3 className="text-white font-bold text-xl mb-2">{game.name}</h3>
@@ -278,10 +278,10 @@ const Index = () => {
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <Card key={index} className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 backdrop-blur-md">
+              <Card key={index} className="bg-gray-900/80 border-gray-700/50 backdrop-blur-md">
                 <CardContent className="p-0">
                   <button
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-purple-500/10 transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800/50 transition-colors"
                     onClick={() => toggleFaq(index)}
                   >
                     <span className="text-white font-semibold">{faq.question}</span>
