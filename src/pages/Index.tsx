@@ -102,7 +102,7 @@ const Index = () => {
             </div>
             <span className="text-white font-bold text-xl">Khai Wala</span>
           </div>
-          <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+          <Button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-semibold">
             <Download className="w-4 h-4 mr-2" />
             Download App
           </Button>
@@ -132,7 +132,7 @@ const Index = () => {
               <Download className="w-5 h-5 mr-2" />
               Download for Android
             </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+            <Button size="lg" className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white">
               <Play className="w-5 h-5 mr-2" />
               Watch Demo
             </Button>
@@ -168,7 +168,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 border-purple-500/30 backdrop-blur-md hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg mx-auto mb-4 flex items-center justify-center text-black">
                     {feature.icon}
@@ -193,7 +193,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {gameTypes.map((game, index) => (
-              <Card key={index} className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 border-white/20 backdrop-blur-md hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border-yellow-500/30 backdrop-blur-md hover:from-yellow-400/30 hover:to-orange-400/30 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4">{game.icon}</div>
                   <h3 className="text-white font-bold text-xl mb-2">{game.name}</h3>
@@ -224,17 +224,15 @@ const Index = () => {
               </div>
             </div>
             <Button
-              variant="outline"
               size="sm"
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 border-white/20 text-white hover:bg-white/10"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black"
               onClick={prevScreenshot}
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
             <Button
-              variant="outline"
               size="sm"
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 border-white/20 text-white hover:bg-white/10"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black"
               onClick={nextScreenshot}
             >
               <ChevronRight className="w-4 h-4" />
@@ -280,10 +278,10 @@ const Index = () => {
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md">
+              <Card key={index} className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 backdrop-blur-md">
                 <CardContent className="p-0">
                   <button
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-purple-500/10 transition-colors"
                     onClick={() => toggleFaq(index)}
                   >
                     <span className="text-white font-semibold">{faq.question}</span>
