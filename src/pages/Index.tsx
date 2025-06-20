@@ -544,7 +544,10 @@ const Index = () => {
           </div>
           <div className="border-t border-white/10 mt-8 pt-8 text-center">
             <p className="text-gray-400 text-sm">
-              © 2024 Khai Wala. All rights reserved. | 18+ Only | Play
+              © 2025 Made By 💖 <a href="https://www.devhq.in" style={{
+                color: "#FFD700",
+                textDecoration: "underline",
+              }}>Devhq.in</a> | 18+ Only | Play
               Responsibly
             </p>
           </div>
