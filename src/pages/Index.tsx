@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +28,11 @@ const Index = () => {
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showDownloadDialog, setShowDownloadDialog] = useState(false);
+  const [latestRelease, setLatestRelease] = useState<{
+    name?: string;
+    tag_name?: string;
+    html_url?: string;
+  } | null>(null);
 
   const screenshots = [
     { title: "Home Screen", description: "Easy navigation and game selection" },
@@ -134,7 +139,7 @@ const Index = () => {
     // Trigger file download
     const downloadLink = document.createElement("a");
     downloadLink.href =
-      "https://github.com/Projects-Kart/khai-wala-landing-page/releases/latest/download/khaiwala.apk"; 
+      "https://github.com/Projects-Kart/khai-wala-landing-page/releases/latest/download/khaiwala.apk";
     downloadLink.download = "khaiwala.apk"; // Optional: force download
     document.body.appendChild(downloadLink);
     downloadLink.click();
@@ -146,6 +151,30 @@ const Index = () => {
     }, 3000);
   };
 
+  // Fetch latest release info from GitHub
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchLatest = async () => {
+      try {
+        const res = await fetch(
+          "https://api.github.com/repos/Projects-Kart/khai-wala-landing-page/releases/latest",
+          { signal: controller.signal }
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        setLatestRelease({
+          name: data?.name,
+          tag_name: data?.tag_name,
+          html_url: data?.html_url,
+        });
+      } catch (_) {
+        // ignore network errors
+      }
+    };
+    fetchLatest();
+    return () => controller.abort();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       {/* Navigation */}
@@ -156,6 +185,11 @@ const Index = () => {
               K
             </div>
             <span className="text-white font-bold text-xl">Khai Wala</span>
+            {latestRelease?.tag_name && (
+              <span className="ml-2 inline-flex items-center rounded-md bg-white/10 px-2 py-0.5 text-xs font-medium text-yellow-300 border border-yellow-500/30">
+                {latestRelease.tag_name}
+              </span>
+            )}
           </div>
           <Button
             className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-semibold"
@@ -163,6 +197,11 @@ const Index = () => {
           >
             <Download className="w-4 h-4 mr-2" />
             Download App
+            {latestRelease?.tag_name && (
+              <span className="ml-2 rounded bg-black/20 px-1.5 py-0.5 text-[10px] font-semibold text-black">
+                {latestRelease.tag_name}
+              </span>
+            )}
           </Button>
         </div>
       </nav>
@@ -171,7 +210,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
-            🎯 #1 Matka Betting App
+            🎯 #1 Betting App
           </Badge>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
@@ -181,10 +220,16 @@ const Index = () => {
           <p className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 animate-fade-in">
             Play Smart, Win Big!
           </p>
+          {latestRelease?.tag_name && (
+            <p className="text-sm text-gray-300 mb-6 animate-fade-in">
+              Latest version:{" "}
+              <span className="text-yellow-300">{latestRelease.tag_name}</span>
+            </p>
+          )}
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in">
-            A safe and exciting online Matka betting experience with 4 unique
-            game types: Harup, Jodi, Crossing, and Single. Join thousands of
-            winners today!
+            A safe and exciting online betting experience with 4 unique game
+            types: Harup, Jodi, Crossing, and Single. Join thousands of winners
+            today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
             <Button
@@ -194,6 +239,11 @@ const Index = () => {
             >
               <Download className="w-5 h-5 mr-2" />
               Download for Android
+              {latestRelease?.tag_name && (
+                <span className="ml-2 rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-semibold text-yellow-200">
+                  {latestRelease.tag_name}
+                </span>
+              )}
             </Button>
             <Button
               size="lg"
@@ -233,8 +283,8 @@ const Index = () => {
               Why Choose Khai Wala?
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Experience the best in online Matka betting with our advanced
-              features and secure platform
+              Experience the best in online betting with our advanced features
+              and secure platform
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -432,8 +482,8 @@ const Index = () => {
               Ready to Start Winning?
             </h2>
             <p className="text-gray-300 mb-8 text-lg">
-              Join thousands of players who trust Khai Wala for their Matka
-              betting experience
+              Join thousands of players who trust Khai Wala for their betting
+              experience
             </p>
             <Button
               size="lg"
@@ -442,6 +492,11 @@ const Index = () => {
             >
               <Download className="w-6 h-6 mr-2" />
               Download Khai Wala Now
+              {latestRelease?.tag_name && (
+                <span className="ml-2 rounded bg-black/20 px-2 py-0.5 text-xs font-semibold text-black">
+                  {latestRelease.tag_name}
+                </span>
+              )}
             </Button>
             <p className="text-sm text-gray-400 mt-4">
               Available for Android devices
@@ -462,7 +517,7 @@ const Index = () => {
                 <span className="text-white font-bold text-xl">Khai Wala</span>
               </div>
               <p className="text-gray-400 text-sm">
-                The most trusted platform for online Matka betting with secure
+                The most trusted platform for online betting with secure
                 payments and fair play.
               </p>
             </div>
@@ -542,14 +597,42 @@ const Index = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 mt-8 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Made By 💖 <a href="https://www.devhq.in" style={{
-                color: "#FFD700",
-                textDecoration: "underline",
-              }}>Devhq.in</a> | 18+ Only | Play
-              Responsibly
-            </p>
+          <div className="border-t border-white/10 mt-8 pt-8 text-center space-y-2">
+            {latestRelease && (
+              <p className="text-gray-300 text-sm">
+                Latest release:{" "}
+                {latestRelease.html_url ? (
+                  <a
+                    href={latestRelease.html_url}
+                    className="text-yellow-400 underline hover:text-yellow-300"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {latestRelease.name || "Untitled"}
+                  </a>
+                ) : (
+                  latestRelease.name || "Untitled"
+                )}{" "}
+                {latestRelease.tag_name && (
+                  <span className="text-gray-400">
+                    ({latestRelease.tag_name})
+                  </span>
+                )}
+              </p>
+            )}
+            {/* <p className="text-gray-400 text-sm">
+              © 2025 Made By 💖{" "}
+              <a
+                href="https://www.devhq.in"
+                style={{
+                  color: "#FFD700",
+                  textDecoration: "underline",
+                }}
+              >
+                Devhq.in
+              </a>{" "}
+              | 18+ Only | Play Responsibly
+            </p> */}
           </div>
         </div>
       </footer>
