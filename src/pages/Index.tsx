@@ -41,12 +41,12 @@ const Index = () => {
       description: "Choose from 4 exciting game types",
     },
     {
-      title: "Betting Interface",
-      description: "Place your bets with confidence",
+      title: "Game Interface",
+      description: "Make your selections with confidence",
     },
     {
-      title: "Results & Winnings",
-      description: "Track your wins and earnings",
+      title: "Results & History",
+      description: "Track your results and activity",
     },
   ];
 
@@ -77,7 +77,7 @@ const Index = () => {
     {
       icon: <Smartphone className="w-6 h-6" />,
       title: "Easy Interface",
-      description: "User-friendly design for seamless betting",
+      description: "User-friendly design for a seamless experience",
     },
     {
       icon: <Zap className="w-6 h-6" />,
@@ -86,36 +86,36 @@ const Index = () => {
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: "Secure Wallet",
-      description: "Safe and encrypted payment system",
+      title: "Secure Account",
+      description: "Safe and encrypted account security",
     },
     {
       icon: <Trophy className="w-6 h-6" />,
-      title: "Daily Wins",
-      description: "Multiple opportunities to win every day",
+      title: "Daily Highlights",
+      description: "Fresh highlights and activity every day",
     },
   ];
 
   const faqs = [
     {
-      question: "Is betting legal on this platform?",
+      question: "Is this app legal to use?",
       answer:
-        "Khai Wala operates in compliance with local regulations. Please check your local laws regarding online betting before participating.",
+        "Khai Wala operates in compliance with local regulations. Please check your local laws and guidelines before using the app.",
     },
     {
-      question: "How are winners decided?",
+      question: "How are results decided?",
       answer:
-        "Winners are determined through a transparent and fair random number generation system. Results are published in real-time for all participants to see.",
+        "Results are determined through a transparent and fair random number generation system. Updates are published in real-time for all users to see.",
     },
     {
-      question: "Is my money safe?",
+      question: "Is my data safe?",
       answer:
-        "Yes, we use bank-grade encryption and secure payment gateways. Your funds are protected with multiple layers of security.",
+        "Yes, we use bank-grade encryption and multiple layers of security to protect your account and personal information.",
     },
     {
-      question: "How do I withdraw my winnings?",
+      question: "How do I manage my account?",
       answer:
-        "Winnings can be withdrawn instantly to your bank account or digital wallet through our secure payment system.",
+        "You can manage your profile and preferences within the app settings, including notifications and privacy options.",
     },
   ];
 
@@ -210,7 +210,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
-            🎯 #1 Betting App
+            🎯 #1 Game App
           </Badge>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
@@ -218,7 +218,7 @@ const Index = () => {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 animate-fade-in">
-            Play Smart, Win Big!
+            Play Smart, Have Fun!
           </p>
           {latestRelease?.tag_name && (
             <p className="text-sm text-gray-300 mb-6 animate-fade-in">
@@ -227,9 +227,8 @@ const Index = () => {
             </p>
           )}
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in">
-            A safe and exciting online betting experience with 4 unique game
-            types: Harup, Jodi, Crossing, and Single. Join thousands of winners
-            today!
+            A safe and exciting experience with 4 unique game types: Harup,
+            Jodi, Crossing, and Single. Join thousands of users today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
             <Button
@@ -263,7 +262,7 @@ const Index = () => {
                     <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                       <Trophy className="w-8 h-8" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Ready to Win?</h3>
+                    <h3 className="font-bold text-lg mb-2">Ready to Start?</h3>
                     <p className="text-sm opacity-80">
                       Choose your lucky numbers
                     </p>
@@ -283,8 +282,8 @@ const Index = () => {
               Why Choose Khai Wala?
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Experience the best in online betting with our advanced features
-              and secure platform
+              Experience the best of our platform with advanced features and
+              secure platform
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -346,7 +345,7 @@ const Index = () => {
               App Screenshots
             </h2>
             <p className="text-gray-300">
-              Take a look at our beautiful and intuitive interface
+              Take a look at our intuitive interface
             </p>
           </div>
           <div className="max-w-md mx-auto relative">
@@ -389,9 +388,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               How It Works
             </h2>
-            <p className="text-gray-300">
-              Start winning in just 3 simple steps
-            </p>
+            <p className="text-gray-300">Get started in just 3 simple steps</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
@@ -403,14 +400,14 @@ const Index = () => {
               },
               {
                 step: "2",
-                title: "Place Your Bet",
-                description: "Pick your lucky numbers and bet amount",
+                title: "Make Your Selection",
+                description: "Pick your numbers and confirm",
                 icon: <Trophy className="w-8 h-8" />,
               },
               {
                 step: "3",
-                title: "Win Big",
-                description: "If your number matches, you win the prize!",
+                title: "See Results",
+                description: "If your number matches, you get a match!",
                 icon: <Star className="w-8 h-8" />,
               },
             ].map((item, index) => (
@@ -479,10 +476,10 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Start Winning?
+              Ready to Get Started?
             </h2>
             <p className="text-gray-300 mb-8 text-lg">
-              Join thousands of players who trust Khai Wala for their betting
+              Join thousands of users who trust Khai Wala for a smooth
               experience
             </p>
             <Button
@@ -517,8 +514,8 @@ const Index = () => {
                 <span className="text-white font-bold text-xl">Khai Wala</span>
               </div>
               <p className="text-gray-400 text-sm">
-                The most trusted platform for online betting with secure
-                payments and fair play.
+                The most trusted platform with a secure experience and fair
+                play.
               </p>
             </div>
             <div>
@@ -541,7 +538,7 @@ const Index = () => {
                 </li>
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
-                    Winners
+                    Updates
                   </a>
                 </li>
               </ul>
@@ -586,7 +583,7 @@ const Index = () => {
                 </li>
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
-                    Responsible Gaming
+                    User Guidelines
                   </a>
                 </li>
                 <li>
@@ -620,19 +617,7 @@ const Index = () => {
                 )}
               </p>
             )}
-            {/* <p className="text-gray-400 text-sm">
-              © 2025 Made By 💖{" "}
-              <a
-                href="https://www.devhq.in"
-                style={{
-                  color: "#FFD700",
-                  textDecoration: "underline",
-                }}
-              >
-                Devhq.in
-              </a>{" "}
-              | 18+ Only | Play Responsibly
-            </p> */}
+            {/* Footer attribution intentionally simplified to avoid gaming terminology */}
           </div>
         </div>
       </footer>
